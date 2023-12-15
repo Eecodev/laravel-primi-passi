@@ -13,14 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/home_page', function () {
+Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 
-Route::get('/about_page', function () {
-    return view('about');
-});
+Route::get('/about', function () {
+    $name = 'Mahdi';
+    $surname = 'Nasser';
+    $data = [
+        'name'=> $name,
+        'surname'=> $surname,
+        'date_of_birth'=> '07/01/1994',
+    ];
+    return view('/pages.about', $data);
+})->name('about');
 
-Route::get('/project_page', function () {
-    return view('projects');
+Route::get('/project', function () {
+    return view('pages.projects');
 });
